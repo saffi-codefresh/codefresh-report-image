@@ -125,6 +125,7 @@ runs:
         CF_GITHUB_API_HOST_URL: ${{ inputs.CF_GITHUB_API_HOST_URL }}
         CF_GITHUB_API_PATH_PREFIX: ${{ inputs.CF_GITHUB_API_PATH_PREFIX }}
         CF_GITHUB_CONTEXT: ${{ inputs.CF_GITHUB_CONTEXT }}
+      
         # JIRA
         CF_JIRA_API_TOKEN: ${{ inputs.CF_JIRA_API_TOKEN }}
         CF_JIRA_EMAIL: ${{ inputs.CF_JIRA_EMAIL }}
@@ -139,4 +140,7 @@ runs:
         echo 'CF_CI_TYPE=github-actions' >> cf_env
         echo "CF_WORKFLOW_URL=$CF_WORKFLOW_URL" >> cf_env
         echo "CF_GIT_BRANCH=${CF_GIT_BRANCH:-GITHUB_REF}" >> cf_env
+        echo "BRANCH $CF_GIT_BRANCH"
+        echo "GITHUB_REF $GITHUB_REF"
+        echo "GITHUB_REPOSITORY $GITHUB_REPOSITORY"
         docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:$VERSION

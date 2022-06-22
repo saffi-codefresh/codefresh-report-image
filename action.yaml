@@ -138,4 +138,5 @@ runs:
         env>cf_env
         echo 'CF_CI_TYPE=github-actions' >> cf_env
         echo "CF_WORKFLOW_URL=$CF_WORKFLOW_URL" >> cf_env
+        echo "CF_GIT_BRANCH=${CF_GIT_BRANCH:-GITHUB_REF}" >> cf_env
         docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:$VERSION

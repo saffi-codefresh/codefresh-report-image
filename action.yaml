@@ -134,6 +134,9 @@ runs:
         CF_JIRA_MESSAGE: ${{ inputs.CF_JIRA_MESSAGE }}
         CF_JIRA_INTEGRATION: ${{ inputs.CF_JIRA_INTEGRATION }}
         CF_JIRA_FAIL_ON_NOT_FOUND: ${{ inputs.CF_JIRA_FAIL_ON_NOT_FOUND }}
+        
+        # github 
+        CF_GITHUB_REF_NAME: ${{ github.ref_name }}
       run: |
         echo "saffi-codefresh/csdp-report-image"
         CF_WORKFLOW_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
@@ -144,4 +147,5 @@ runs:
         echo "BRANCH $CF_GIT_BRANCH"
         echo "GITHUB_REF $GITHUB_REF"
         echo "GITHUB_REPOSITORY $GITHUB_REPOSITORY"
+        echo "CF_GITHUB_REF_NAME $CF_GITHUB_REF_NAME"
         docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:$VERSION

@@ -149,7 +149,6 @@ runs:
         CF_GIT_BRANCH=${CF_GIT_BRANCH:-$CF_GITHUB_REF_NAME}
         CF_GIT_REPO=${CF_GIT_REPO:-$CF_GITHUB_REPOSITORY}
 
-        github.action_repository
         env>cf_env
         echo 'CF_CI_TYPE=github-actions' >> cf_env
         echo "CF_WORKFLOW_URL=$CF_WORKFLOW_URL" >> cf_env

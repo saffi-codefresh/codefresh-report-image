@@ -146,14 +146,14 @@ runs:
         env>cf_env
         echo 'CF_CI_TYPE=github-actions' >> cf_env
         echo "CF_WORKFLOW_URL=$CF_WORKFLOW_URL" >> cf_env
-        echo "CF_GIT_BRANCH=${CF_GIT_BRANCH:-CF_GITHUB_REF_NAME}" >> cf_env
-        echo "CF_JIRA_MESSAGE=${CF_JIRA_MESSAGE:-CF_GIT_COMMIT_MESSAGE}" >> cf_env        
+        echo "CF_GIT_BRANCH=${CF_GIT_BRANCH:-$CF_GITHUB_REF_NAME}" >> cf_env
+        echo "CF_JIRA_MESSAGE=${CF_JIRA_MESSAGE:-$CF_GIT_COMMIT_MESSAGE}" >> cf_env        
         echo "BRANCH $CF_GIT_BRANCH"
         echo "GITHUB_REF $GITHUB_REF"
         echo "GITHUB_REPOSITORY $GITHUB_REPOSITORY"
         echo "CF_GITHUB_REF_NAME $CF_GITHUB_REF_NAME"
         echo "CF_JIRA_MESSAGE $CF_JIRA_MESSAGE"
-        echo "CF_GIT_PROVIDER=${CF_GIT_PROVIDER:-'github"}" >> cf_env
+        echo "CF_GIT_PROVIDER=${CF_GIT_PROVIDER:-github}" >> cf_env
 
 
         docker run --env-file=cf_env quay.io/codefresh/csdp-report-image:$VERSION

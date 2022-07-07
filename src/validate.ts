@@ -7,7 +7,10 @@ import { atob } from 'buffer'
 export function validate(payload: Record<string, string|undefined>): Record<string, string|undefined> {
     if (payload['EXTERNAL_ENV']) {
         try {
-            payload = JSON.parse(atob(payload['EXTERNAL_ENV']))
+            const text = atob(payload['EXTERNAL_ENV'])
+            console.log(`GOT payload ${JSON.stringify(payload)}`)
+
+            payload = JSON.parse(text)
         } catch (error) {
             console.log(`could not handle ${JSON.stringify(payload['EXTERNAL_ENV'])} , Error ${JSON.stringify(error)}  `)
         }

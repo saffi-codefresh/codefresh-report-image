@@ -24,17 +24,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Login to Quay.io
+      - name: Login
         uses: docker/login-action@v2
         with:
-          # generic docker login action using quay.io
-          registry: quay.io
-          username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_PASSWORD }}
+#           registry: quay.io
+#           username: ${{ secrets.QUAY_USERNAME }}
+#           password: ${{ secrets.QUAY_PASSWORD }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build & push the Docker image
         env:
           # image name and tag must be specified for that integration to work.
-          CF_IMAGE: quay.io/${{ secrets.QUAY_USERNAME }}/codefresh-report-image:latest
+          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/codefresh-report-image:latest
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
           echo "Image should be accessible to your local machine (after docker login) by:"

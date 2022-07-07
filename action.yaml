@@ -1,4 +1,4 @@
-name: 'csdp-report-image'
+name: 'codefresh-report-image'
 description: 'Report image to csdp'
 inputs:
   VERSION:

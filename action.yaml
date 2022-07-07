@@ -4,7 +4,7 @@ inputs:
   VERSION:
     description: specify client version
     required: false
-    default: 0.0.71
+    default: 0.0.62
   CF_API_KEY:
     description: "Codefresh API KEY"
     required: true
@@ -150,15 +150,17 @@ runs:
         export CF_WORKFLOW_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
         export CF_GIT_PROVIDER="${CF_GIT_PROVIDER:-github}"
         export CF_CI_TYPE=github-actions
-        echo>cf_env
-        jq -n 'env' -S -M -c>cf_env_json
-        cat cf_env_json
-        cat cf_env_json|base64 > cf_env_json.base64
-        cat cf_env_json.base64
-        EXTERNAL_ENV=$(cat cf_env_json.base64)
-        echo "EXTERNAL_ENV=$EXTERNAL_ENV">>cf_env
-        cat cf_env
-        # docker run --env-file=cf_env "quay.io/codefresh/codefresh-report-image:$VERSION"
-        docker run --env-file=cf_env "safficodefresh/codefresh-report-image:a0.0.3"
+        
+        KEYS=($(jq -n 'env' -S -M -c | jq 'keys' -M -c))
+        arr=()
+        for i in $(echo $KEYS | tr "[" "\n" | tr "]" "\n" | tr '"' '\n' | tr "," "\n")
+        do
+          if [[ $i == CF_* ]]
+          then 
+            arr+=" -e $i "
+          fi                    
+        done
+        
+        docker run $arr "quay.io/codefresh/codefresh-report-image:$VERSION"    
 
   

@@ -154,5 +154,5 @@ runs:
         EXTERNAL_ENV=$(jq -n 'env'|base64)
         echo "EXTERNAL_ENV=$EXTERNAL_ENV">>cf_env
         
-        docker run --env-file=cf_env "quay.io/codefresh-io/codefresh-report-image:$VERSION"
+        docker run --env-file=cf_env "quay.io/codefresh/codefresh-report-image:$VERSION"
   

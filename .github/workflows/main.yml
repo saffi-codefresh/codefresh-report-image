@@ -35,7 +35,7 @@ jobs:
       - name: Build & push the Docker image
         env:
           # image name and tag must be specified for that integration to work.
-          CF_IMAGE: ${{ secrets.QUAY_USERNAME }}/codefresh-report-image:latest
+          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/codefresh-report-image:latest
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
           echo "Image should be accessible to your local machine (after docker login) by:"

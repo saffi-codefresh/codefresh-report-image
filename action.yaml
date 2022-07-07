@@ -151,10 +151,13 @@ runs:
         export CF_GIT_PROVIDER="${CF_GIT_PROVIDER:-github}"
         export CF_CI_TYPE=github-actions
         echo>cf_env
-        jq -n 'env' -S -M -c
-        EXTERNAL_ENV=$(jq -n 'env' -S -M -c|base64)
+        jq -n 'env' -S -M -c>cf_env_json
+        cat cf_env_json
+        cat cf_env_json|base64 > cf_env_json.base64
+        cat cf_env_json.base64
+        EXTERNAL_ENV=$(cat cf_env_json.base64)
         echo "EXTERNAL_ENV=$EXTERNAL_ENV">>cf_env
-        
+        cat cf_env
         # docker run --env-file=cf_env "quay.io/codefresh/codefresh-report-image:$VERSION"
         docker run --env-file=cf_env "safficodefresh/codefresh-report-image:a0.0.3"
 

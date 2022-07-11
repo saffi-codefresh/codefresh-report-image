@@ -24,6 +24,8 @@ async function main(argv, env): Promise<void> {
         logger.info(`CI provider: ${payload['CF_CI_TYPE']}, job URL: ${payload['CF_WORKFLOW_URL']}`)
     }
     const eventSource = new EventSource(url, { headers })
+    // eventSource.connection.setTimeout(0) // never timeout - abort is done by the server
+
     const waitFor = new Promise<void>((resolve, reject) => {
         
         eventSource.addEventListener('report', function (event) {

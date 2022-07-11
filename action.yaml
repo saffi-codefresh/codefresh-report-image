@@ -154,6 +154,6 @@ runs:
         env | cut -f 1 -d "=" | grep -E "^CF_"  > cf_env
         echo "Provided env vars: $(cat cf_env|xargs echo)"
         VERSION="a0.0.5"
-        docker run --env-file=cf_env "saffi-codefresh/codefresh-report-image:$VERSION"
+        docker run --env-file=cf_env "safficodefresh/codefresh-report-image:$VERSION"
 
   

@@ -1,6 +1,6 @@
 {
   "name": "codefresh-report-image",
-  "version": "0.0.111",
+  "version": "0.0.112",
   "description": "CI tools client reporting a buit image by calling image-report and receiving progress events",
   "main": "index.js",
   "repository": "git@github.com:codefresh-io/csdp-report-image.git",

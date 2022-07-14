@@ -19,7 +19,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "ci-test": "yarn install && yarn test && yarn prebuild",
-    "release": ""
+    "release": "yarn run release-it --patch --ci"
   },
   "engines": {
     "node": "16.14.2"

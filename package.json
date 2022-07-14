@@ -20,7 +20,7 @@
     "test:cov": "jest --coverage",
     "ci-test": "yarn install && yarn test && yarn prebuild",
     "bump": "yarn run release-it --patch --ci -c .release-it.ci.json",
-    "promote": "yarn run release-it --ci -c .release-it.promote.json.json"
+    "promote": "yarn run release-it --ci -c .release-it.promote.json"
   },
   "engines": {
     "node": "16.14.2"

@@ -1,6 +1,9 @@
 
 {
   "use" : "yarn promote",
+  "npm": {
+    "publish": false
+  },
   "github": {
     "release": true,
     "preRelease": true,

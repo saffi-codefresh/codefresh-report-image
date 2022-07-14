@@ -18,7 +18,8 @@
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "ci-test": "yarn install && yarn test && yarn prebuild"
+    "ci-test": "yarn install && yarn test && yarn prebuild",
+    "release": ""
   },
   "engines": {
     "node": "16.14.2"

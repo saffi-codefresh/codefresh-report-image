@@ -24,6 +24,7 @@ Commit that resulted in the image being built
 * Assigned to
 * Status
 
+
 ## Example - github-actions
   ```
   - name: report image by action

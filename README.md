@@ -133,3 +133,4 @@ For each specific connection (such as jira) parameters can be provided explicitl
      - ["examples",["fix CR-11312 "]]
 
       
+      
